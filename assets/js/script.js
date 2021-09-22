@@ -33,7 +33,7 @@ function startGame() {
     initApp();
     startTime();
     displayQuestion();
-    markAnswer();
+
     addWinLoss();
 }
 
@@ -42,18 +42,20 @@ function initApp() {
     wins = 0;
     win = false;
     loss = false;
-    }
+    //disable start button after start
+}
 function startTime() {
+    //disable start button after start
     timeRemain = 15;
     timer = setInterval(function () {
         timeRemain--;
         timerEl.textContent = timeRemain;
-        console.log(timeRemain)
+       
 
         if (timeRemain === 0) {
             clearInterval(timer);
             markAnswer();
-        
+
         }
     }, 1000);
 }
@@ -63,74 +65,79 @@ function displayQuestion() {
     // console.log(questions[3].multiChoice.length);
     if (questionNumber === 0) {
         questionBlock.textContent = questions[questionNumber].question;
-        for (let i = 0; i < questions[i].multiChoice.length; i++) {
+        for (let i = 0; i < questions[questionNumber].multiChoice.length; i++) {
             const item = document.createElement('li');
-            item.textContent = questions[i].multiChoice[i];
+            item.textContent = questions[questionNumber].multiChoice[i];
+            item.value=i
+            item.addEventListener("click", markAnswer)
             multiChoiceBlock.appendChild(item);
             // make selectable
         }
     } else {
         questionBlock.textContent = questions[questionNumber].question;
-        for (let i = 0; i < questions[i].multiChoice.length; i++) {
-            item.textContent = questions[i].multiChoice[i];
+        for (let i = 0; i < questions[questionNumber].multiChoice.length; i++) {
+            item.textContent = questions[questionNumber].multiChoice[i];
+            item.value=i
+            item.addEventListener("click", markAnswer)
             multiChoiceBlock.appendChild(item);
-           // make selectable
+            // make selectable
         }
     }
 }
-    // let questionKey = Math.floor((Math.random() * questions.length) + 1);
-    // let answerKey = Math.floor((Math.random() * multiChoice.length) + 1);
-    //do once
+// let questionKey = Math.floor((Math.random() * questions.length) + 1);
+// let answerKey = Math.floor((Math.random() * multiChoice.length) + 1);
+//do once
 
-    // for (let i = 0; i < questions[i].multiChoice.length ; i++) {
-    //     //create
-    //     const item = document.createElement('li');
-    //     // define
-    //    item.textContent = questions[i].multiChoice[i];
-    //     //append
-    //     multiChoiceBlock.appendChild(item);
-    // this is where it stops
+// for (let i = 0; i < questions[i].multiChoice.length ; i++) {
+//     //create
+//     const item = document.createElement('li');
+//     // define
+//    item.textContent = questions[i].multiChoice[i];
+//     //append
+//     multiChoiceBlock.appendChild(item);
+// this is where it stops
 
-    // questionBlock.textContent = questions[i].question;
-    //     for (let h = 0; h <  questions[i].multiChoice.length; h++) { 
-    //         multiChoiceBlock.document.createElement(li);
-    //         multiChoiceBlock.textContent = questions[i].multiChoice[h];
-    //         console.log(multiChoice.length);
-    //     }
+// questionBlock.textContent = questions[i].question;
+//     for (let h = 0; h <  questions[i].multiChoice.length; h++) { 
+//         multiChoiceBlock.document.createElement(li);
+//         multiChoiceBlock.textContent = questions[i].multiChoice[h];
+//         console.log(multiChoice.length);
+//     }
+// }
+//    let li = document.createElement("li");
+//   |   multiChoiceBlock.textContent = questions[i].multiChoice[i];
+// need to split off text of array
+// multiChoiceBlock.textContent = 
+
+
+
+function markAnswer(event) {
+    // if (timeRemain === 0) {
+    //     -- losses
+    //     loss = true;
+    //     win = false;
     // }
-    //    let li = document.createElement("li");
-    //   |   multiChoiceBlock.textContent = questions[i].multiChoice[i];
-    // need to split off text of array
-    // multiChoiceBlock.textContent = 
+    // if win =
+    //is what they selected correct
+    // if true 
+    //add to timer
+    // add a win
+    //get next question
+    // if false 
+    // let correctAnswer = 1
+    // if questions.correct === 1
+console.log(event.target.value)
 
+}
 
+function addWinLoss(winLoss) {
 
-    function markAnswer() {
-        if (timeRemain === 0) {
-            -- losses
-            loss = true;
-            win = false;
-        }
-        if win =
-        //is what they selected correct
-        // if true 
-        //add to timer
-        // add a win
-        //get next question
-        // if false 
-        // let correctAnswer = 1
-        // if questions.correct === 1
-
-    }
-
-    function addWinLoss(winLoss) {
-
-    }
+}
     //later on
     // function evalAnswer(e){
     //     //code to eval answer here ...  youll need to use something called  this.target to evaluate 
     //     questionNum ++ 
     //    displayQuestion()
 
-}
+
 startButton.addEventListener("click", startGame);
