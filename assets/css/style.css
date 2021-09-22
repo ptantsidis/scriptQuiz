@@ -1,6 +1,6 @@
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
+    /* text-align: center; */
 }
 
 header {
@@ -15,6 +15,3 @@ header {
       font-weight: bold;
   }
 
-ol {
-        text-align: center;
-}
