@@ -1,0 +1,20 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+header {
+    padding: 40px;
+    background: #4f8cc5;
+    color: #fff;
+    border-bottom:30px #879274;
+  }
+  nav {
+      color: black;
+      font-size: medium;
+      font-weight: bold;
+  }
+
+ol {
+        text-align: center;
+}
