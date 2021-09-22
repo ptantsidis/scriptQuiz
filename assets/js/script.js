@@ -8,6 +8,8 @@ let timeRemain = 15;
 let wins = false;
 let loss = false;
 let timer;
+let questionNumber = 0;
+
 let questions = [{
     question: "JavaScript is ______ Side scripting language.",
     multiChoice: ["a. Server", " b. Client", "c. ISP", "d. Browser"],
@@ -33,27 +35,31 @@ function startGame() {
 }
 
 function startTime() {
-    // timeRemain = 15;
-    // timer = setInterval(function () {
-    //     timeRemain--;
-    //     timerEl.textContent = timeRemain;
-    //     console.log(timeRemain)
+    timeRemain = 15;
+    timer = setInterval(function () {
+        timeRemain--;
+        timerEl.textContent = timeRemain;
+        console.log(timeRemain)
 
-    //     if (timeRemain === 0) {
-    //         clearInterval(timer);
-    //     }
-    // }, 1000);
+        if (timeRemain === 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
 }
 startButton.addEventListener("click", startGame);
 
 function displayQuestion() {
     // let questionKey = Math.floor((Math.random() * questions.length) + 1);
     // let answerKey = Math.floor((Math.random() * multiChoice.length) + 1);
-    let i = 0;
-    // for (let i = 0; i < questions.length; i++) {
-        questionBlock.textContent = questions[i].question;
+
+    for (let i = 0; i < questions[questionNumber].multiChoice.length; i++) {
+        //create
         multiChoiceBlock.document.createElement("li");
-        multiChoiceBlock.textContent = questions[i].multiChoice[0];
+        // define
+        multiChoiceBlock.textContent = questions[questionNumber].multiChoice[i];
+        //append
+        multiChoiceBlock.appendchild(questionBlock);
+        // questionBlock.textContent = questions[i].question;
         //     for (let h = 0; h <  questions[i].multiChoice.length; h++) { 
         //         multiChoiceBlock.document.createElement(li);
         //         multiChoiceBlock.textContent = questions[i].multiChoice[h];
@@ -75,4 +81,9 @@ function displayQuestion() {
     function addWinLoss(winLoss) {
 
     }
-
+//later on
+// function evalAnswer(e){
+//     //code to eval answer here ...  youll need to use something called  this.target to evaluate 
+//     questionNum ++ 
+//    displayQuestion()
+}
