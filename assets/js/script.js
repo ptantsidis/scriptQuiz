@@ -1,143 +1,128 @@
 let timerEl = document.querySelector(".time-remain");
 let startButton = document.querySelector(".start-button");
+let logButton = document.querySelector(".log-button");
 let questionBlock = document.querySelector("#question-list");
 let multiChoiceBlock = document.querySelector("#multi-choice-list");
+let item = document.createElement('li');
 
 let timeRemain = 15;
-let win = false;
-let loss = false;
 let losses = 0;
 let wins = 0;
 let timer;
 let questionNumber = 0;
+let i = 0;
 
 let questions = [{
     question: "JavaScript is ______ Side scripting language.",
     multiChoice: ["Server", "Client", "ISP", "Browser"],
-    correct: "4"
+    correctAnswer: "3"
 },
 {
     question: "The behaviour of the document elements can be defined by",
     multiChoice: ["Using document object", "Registering appropriate event handlers", "Using element object", "All of the above."],
-    correct: "2"
+    correctAnswer: "1"
 },
 {
     question: " ______ tag is an extension to HTML that can enclose any number of JavaScript statements.",
     multiChoice: ["<SCRIPT>", "<BODY>", "<HEAD>", "<TITLE>"],
-    correct: "1"
+    correctAnswer: "0"
 }]
 
-let questionKey = Math.floor((Math.random() * questions.length) + 1);
-
+// let questionKey = Math.floor((Math.random() * questions.length) + 1);
+// no sure why I set this up
 function startGame() {
     initApp();
     startTime();
     displayQuestion();
-
-    addWinLoss();
-}
+   }
 
 function initApp() {
     losses = 0;
     wins = 0;
-    win = false;
-    loss = false;
-    //disable start button after start
+    startButton.disabled = false;
+    questionNumber = 0
 }
 function startTime() {
-    //disable start button after start
+    startButton.disabled = true;
     timeRemain = 15;
     timer = setInterval(function () {
         timeRemain--;
         timerEl.textContent = timeRemain;
-       
-
         if (timeRemain === 0) {
             clearInterval(timer);
             markAnswer();
-
         }
     }, 1000);
 }
 
-
-function displayQuestion() {
-    // console.log(questions[3].multiChoice.length);
+function displayQuestion() { 
+    console.log("displayQuestion");
     if (questionNumber === 0) {
         questionBlock.textContent = questions[questionNumber].question;
-        for (let i = 0; i < questions[questionNumber].multiChoice.length; i++) {
-            const item = document.createElement('li');
+        for (i = 0; i < questions[questionNumber].multiChoice.length; i++) {
+            console.log(questionNumber);
+            item = document.createElement('li');          
             item.textContent = questions[questionNumber].multiChoice[i];
-            item.value=i
-            item.addEventListener("click", markAnswer)
+            item.value=i;
+            item.addEventListener("click", markAnswer);
             multiChoiceBlock.appendChild(item);
-            // make selectable
+            console.log(questions[questionNumber].correctAnswer[0]);
         }
     } else {
         questionBlock.textContent = questions[questionNumber].question;
-        for (let i = 0; i < questions[questionNumber].multiChoice.length; i++) {
+        for (i = 0; i < questions[questionNumber].multiChoice.length; i++) {
             item.textContent = questions[questionNumber].multiChoice[i];
-            item.value=i
-            item.addEventListener("click", markAnswer)
+            item.value= i;
+            item.addEventListener("click", markAnswer());
             multiChoiceBlock.appendChild(item);
-            // make selectable
+            item = document.replaceChildren('li', 'li');
+            console.log(questions[questionNumber].correctAnswer);
         }
     }
 }
-// let questionKey = Math.floor((Math.random() * questions.length) + 1);
-// let answerKey = Math.floor((Math.random() * multiChoice.length) + 1);
-//do once
-
-// for (let i = 0; i < questions[i].multiChoice.length ; i++) {
-//     //create
-//     const item = document.createElement('li');
-//     // define
-//    item.textContent = questions[i].multiChoice[i];
-//     //append
-//     multiChoiceBlock.appendChild(item);
-// this is where it stops
-
-// questionBlock.textContent = questions[i].question;
-//     for (let h = 0; h <  questions[i].multiChoice.length; h++) { 
-//         multiChoiceBlock.document.createElement(li);
-//         multiChoiceBlock.textContent = questions[i].multiChoice[h];
-//         console.log(multiChoice.length);
-//     }
-// }
-//    let li = document.createElement("li");
-//   |   multiChoiceBlock.textContent = questions[i].multiChoice[i];
-// need to split off text of array
-// multiChoiceBlock.textContent = 
-
-
 
 function markAnswer(event) {
-    // if (timeRemain === 0) {
-    //     -- losses
-    //     loss = true;
-    //     win = false;
-    // }
-    // if win =
-    //is what they selected correct
-    // if true 
-    //add to timer
-    // add a win
-    //get next question
-    // if false 
-    // let correctAnswer = 1
-    // if questions.correct === 1
-console.log(event.target.value)
+console.log("markanswer")
+    if (timeRemain === 0) {
+        clearInterval(timer);
+        lostGame();
+        }
 
+    if (!event.target.value == questions[questionNumber].correctAnswer) {
+        lostGame();
+    } else {
+        winGame();
+    }
 }
 
-function addWinLoss(winLoss) {
-
+function lostGame() {
+    console.log("lostgame")
+    losses++;
+    timeRemain  = timeRemain - 5;
+    questionNumber++
+    displayQuestion();
 }
-    //later on
-    // function evalAnswer(e){
-    //     //code to eval answer here ...  youll need to use something called  this.target to evaluate 
-    //     questionNum ++ 
-    //    displayQuestion()
 
+function winGame() {
+    console.log("wingame")
+    wins++; 
+    timeRemain  = timeRemain + 5;
+    questionNumber++;
+    displayQuestion();
+}
+function logGame() {
+// // write to local storage
+//     let gameLog = {
+//         // name: name.value,
+//         losses: losses.value,
+//         wins: wins.value,
+//     }
+}
+
+localStorage.setItem("logGame", JSON.stringify(logGame));
+  
 
 startButton.addEventListener("click", startGame);
+
+
+logButton.addEventListener("click", logGame);
