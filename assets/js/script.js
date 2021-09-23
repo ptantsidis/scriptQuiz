@@ -1,4 +1,7 @@
 let timerEl = document.querySelector(".time-remain");
+let winsEl = document.querySelector(".wins");
+let lossesEl = document.querySelector(".losees");
+let overEl = document.querySelector(".Over");
 let startButton = document.querySelector(".start-button");
 let logButton = document.querySelector(".log-button");
 let questionBlock = document.querySelector("#question-list");
@@ -45,6 +48,7 @@ function startGame() {
     initApp();
     startTime();
     displayQuestion();
+
 }
 
 function initApp() {
@@ -54,7 +58,6 @@ function initApp() {
     questionNumber = 0
 }
 function startTime() {
-    console.log(event.target.value)
     startButton.disabled = true;
     timeRemain = 15;
     timer = setInterval(function () {
@@ -68,7 +71,7 @@ function startTime() {
 }
 
 function displayQuestion() {
-   if (questionNumber != questions.length) {
+    if (questionNumber != questions.length) {
         multiChoiceBlock.innerHTML = "";
         questionBlock.textContent = questions[questionNumber].question;
         for (i = 0; i < questions[questionNumber].multiChoice.length; i++) {
@@ -79,45 +82,55 @@ function displayQuestion() {
             multiChoiceBlock.appendChild(item);
         }
     } else {
-        winGame();
+        gameOver();
     }
 }
 
-
 function markAnswer(event) {
     console.log(questions[questionNumber].correctAnswer)
-    if (timeRemain === 0) {
-        clearInterval(timer);
-        lostGame();
-    }
 
-    if (!event.target.value == questions[questionNumber].correctAnswer) {
-        lostGame();
-    } else {
+    if (event.target.value == questions[questionNumber].correctAnswer) {
         winGame();
+    } else {
+        lostGame();
     }
 }
 
 function lostGame() {
-    console.log("lostgame")
-    losses++;
-    timeRemain = timeRemain - 5;
+
+    console.log("lostgame");
+    losses++ ;
+    lossesEl.textContent = losses;
     questionNumber++
     if ((timeRemain > 0) && (questionNumber != questions.length)) {
+        timeRemain = timeRemain - 5;
         displayQuestion();
     } else {
-        return;
+        gameOver();
     }
 }
 
 function winGame() {
     console.log("wingame")
     wins++;
-    timeRemain = timeRemain + 5;
+    winsEl.textContent = wins;
+    
     questionNumber++;
-    displayQuestion();
+    if ((timeRemain > 0) && (questionNumber != questions.length)) {
+        timeRemain = timeRemain + 5;
+        displayQuestion();
+    } else {
+        gameOver();
+    }
+}
+
+function gameOver() {
+    clearInterval(timer);
+    over.textContent = "Game Over"
+    return;
 }
 function logGame() {
+    confirm("Log Results to local storage?")
     // // write to local storage
     //     let gameLog = {
     //         // name: name.value,
@@ -127,9 +140,5 @@ function logGame() {
 }
 
 localStorage.setItem("logGame", JSON.stringify(logGame));
-
-
 startButton.addEventListener("click", startGame);
-
-
 logButton.addEventListener("click", logGame);

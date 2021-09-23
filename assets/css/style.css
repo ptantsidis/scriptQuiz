@@ -1,6 +1,6 @@
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* text-align: center; */
+    text-align: center; 
 }
 
 header {
@@ -9,9 +9,17 @@ header {
     color: #fff;
     border-bottom:30px #879274;
   }
-  nav {
+nav {
       color: black;
       font-size: medium;
       font-weight: bold;
+  }
+  li {
+    text-align: center;
+  }
+
+  .time-remain {
+    font-size: x-large;
+    font-weight: bold;
   }
 

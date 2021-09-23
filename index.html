@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>JavaSript Game Quiz</title>
+    <title>JavaScript Game Quiz</title>
 </head>
 
 <body>
@@ -13,15 +13,16 @@
             <h1>Mind Games in JavaScript API</h1>            
     	</header>
 	<main>
-        <nav> 
-            <div class = "time-remain">15</div>
-        </nav>
     	<section>
             <div id = "question-list">Question</div>
             <ol>
                 <ol id = "multi-choice-list"></ol>
             </ol>  
-            <button class = "start-button">Start Game</button>  
+            <button class = "start-button">Start Game</button> 
+            <div class = "time-remain">15</div>
+             <h3>Wins: <span class = "wins">0</span> </h3>
+             <h3>Losses: <span class = "losses">0</span> </h3>
+             <h3> <span class = "over"></span> </h3>
         </section>	
         <button class = "log-button">Save Game Settings</button> 
             <!-- <div class="card">

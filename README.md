@@ -12,9 +12,7 @@ Wrong gets less time and --losses
 both are retained  
 next question
 
-no more question looped through query 
-or when timer is zero
-game is over
+game is over when either the timer is done or all questions have been answered
 
 
 
