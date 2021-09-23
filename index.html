@@ -9,30 +9,39 @@
 </head>
 
 <body>
-    	<header>
-            <h1>Mind Games in JavaScript API</h1>            
-    	</header>
-	<main>
-    	<section>
-            <div id = "question-list">Question</div>
+    <header>
+        <h1>Mind Games in JavaScript API</h1>
+    </header>
+    <main>
+        <section>
+            <div id="question-list">Question</div>
             <ol>
-                <ol id = "multi-choice-list"></ol>
-            </ol>  
-            <button class = "start-button">Start Game</button> 
-            <div class = "time-remain">15</div>
-             <h3>Wins: <span class = "wins">0</span> </h3>
-             <h3>Losses: <span class = "losses">0</span> </h3>
-             <h3> <span class = "over"></span> </h3>
-        </section>	
-        <button class = "log-button">Save Game Settings</button> 
-            <!-- <div class="card">
-                <h2>Last Saved Grade</h2>
-                <p>Student's Name: <span id="saved-name"></span></p>
-                <p>Grade: <span id="saved-grade"></span></p>
-                <p>Comment: <span id="saved-comment"></span></p>
-            </div> -->
+                <ol id="multi-choice-list">Mulitple Choice</ol>
+            </ol>
+            <button class="start-button">Start Game</button>
+            <div class="time-remain">15</div>
+            <h3><span class="over"></span> </h3>
+        </section>
+        <section>
+            <h3>Wins: <span class="wins">0</span> </h3>
+            <h3>Losses: <span class="losses">0</span> </h3>
+        </section>
+        <div class="sign-up">
+            <div class="userScore">
+                <label for="initials">Initials: </label>
+                <input type="text" name="initials" id="initials" />
+            </div>
+            <div class="userScore">
+                <label for="gamesWon">Won:    </label>
+                <input type="gamesWon" name="gamesWon" id="gamesWon" placeholder="0" />
+            </div>
+            <div class="userScore">
+                <label for="gamelost">Lost:   </label>
+                <input type="gamelost" name="gamelost" id="gamelost" placeholder="0"/>
+            </div> 
+        </div>
 	</main>
-	<script src="assets/js/script.js"></script>
+	<script src=" assets/js/script.js"></script>
 </body>
 
 </html>

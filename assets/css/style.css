@@ -16,6 +16,7 @@ nav {
   }
   li {
     text-align: center;
+ 
   }
 
   .time-remain {
@@ -23,3 +24,8 @@ nav {
     font-weight: bold;
   }
 
+#question-list, #multi-choice-list, #signup {
+  display: inline-block;
+  background: #8fa6bb;
+  padding: 3rem;
+}
