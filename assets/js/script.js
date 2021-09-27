@@ -9,7 +9,8 @@ let multiChoiceBlock = document.querySelector("#multi-choice-list");
 let item = document.createElement('li');
 let userSignup = document.querySelector("#initials");
 let gamesWon = document.querySelector("#gamesWon");
-let gameslost = document.querySelector("#gamesLost");
+let gamesLost = document.querySelector("#gamesLost");
+let HighScore = document.querySelector(".high-score");
 
 let timeRemain = 15;
 let losses = 0;
@@ -57,14 +58,14 @@ function initApp() {
     losses = 0;
     wins = 0;
     startButton.disabled = false;
-    logButton.disabled = false;
+    // logButton.disabled = false;
     questionNumber = 0;
     winsEl.textContent = 0;
     lossesEl.textContent = 0;
 }
 function startTime() {
     startButton.disabled = true;
-    logButton.disabled = true;
+    // logButton.disabled = true;
     timeRemain = 15;
     timer = setInterval(function () {
         timeRemain--;
@@ -131,22 +132,39 @@ function gameOver() {
     clearInterval(timer);
     timeRemain = 0;
     overEl.textContent = ("Game Over");
-    logButton.disabled = false;
-    startButton.disabled = false;
+    // logButton.disabled = false;
+    // startButton.disabled = false;
     questionBlock.textContent = ("A Valiant Attempt");
     multiChoiceBlock.innerHTML = "";
 }
-
-startButton.addEventListener("click", startGame);
-logButton.addEventListener("click", function (event) {
+ 
+ logButton.addEventListener("click", function(event) {
     event.preventDefault();
     let initials = document.querySelector("#initials").value;
-    logButton.disabled = true;
+    // logButton.disabled = true;
 
     if (initials === "") {
-        displayMessage("error", "Initials cannot be blank");
+        alert("Initials cannot be blank");
+    } else {
         localStorage.setItem("initials", initials);
-        localStorage.setItem("gamesWon", gameswon);
-        localStorage.setItem("gamelost", gameslost);
+        localStorage.setItem("gamesWon", wins);
+        localStorage.setItem("gamelost", losses);
     }
-});
+ });
+//  highScoreButton.addEventListener("click", function(event) {
+//     event.preventDefault(); 
+
+
+
+startButton.addEventListener("click", startGame);
+// logButton.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     let initials = document.querySelector("#initials").value;
+//     logButton.disabled = true;
+
+//     if (initials === "") {
+//         displayMessage("error", "Initials cannot be blank");
+//         localStorage.setItem("initials", initials);
+//         localStorage.setItem("gamesWon", gameswon);
+//         localStorage.setItem("gamelost", gameslost);
+//     }

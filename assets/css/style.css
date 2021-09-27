@@ -2,7 +2,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center; 
 }
-
 header {
     padding: 40px;
     background: #4f8cc5;
@@ -14,18 +13,28 @@ nav {
       font-size: medium;
       font-weight: bold;
   }
-  li {
+
+  /* .start-button {
+    text-align: center;
+  } */
+  /* ol {
     text-align: center;
  
-  }
+  } */
 
   .time-remain {
     font-size: x-large;
     font-weight: bold;
   }
 
-#question-list, #multi-choice-list, #signup {
+#question-list,  #signup {
   display: inline-block;
   background: #8fa6bb;
   padding: 3rem;
+}
+#multi-choice-list {
+  /* display: inline-block; */
+  /* text-align: left; */
+  background: #8fa6bb;
+
 }
