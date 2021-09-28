@@ -10,7 +10,8 @@ let item = document.createElement('li');
 let userSignup = document.querySelector("#initials");
 let gamesWon = document.querySelector("#gamesWon");
 let gamesLost = document.querySelector("#gamesLost");
-let HighScore = document.querySelector(".high-score");
+let userSign = document.querySelector(".high-score");
+let userScore = document.querySelectorAll(".highscore")
 
 let timeRemain = 15;
 let losses = 0;
@@ -19,6 +20,14 @@ let timer;
 let questionNumber = 0;
 let i = 0;
 let h = 0;
+
+let winsLosses = [{
+    initials: "",
+    wins: 0,
+    losses: 0,
+}]
+
+
 
 let questions = [{
     question: "JavaScript is ______ Side scripting language.",
@@ -57,15 +66,12 @@ function startGame() {
 function initApp() {
     losses = 0;
     wins = 0;
-    startButton.disabled = false;
-    // logButton.disabled = false;
     questionNumber = 0;
     winsEl.textContent = 0;
     lossesEl.textContent = 0;
+   
 }
 function startTime() {
-    startButton.disabled = true;
-    // logButton.disabled = true;
     timeRemain = 15;
     timer = setInterval(function () {
         timeRemain--;
@@ -108,6 +114,7 @@ function lostGame() {
     questionNumber++
     if ((timeRemain > 5) && (questionNumber != questions.length)) {
         timeRemain = timeRemain - 5;
+        timerEl.textContent = timeRemain;
         displayQuestion();
     } else {
         gameOver();
@@ -122,6 +129,7 @@ function winGame() {
     questionNumber++;
     if ((timeRemain > 0) && (questionNumber != questions.length)) {
         timeRemain = timeRemain + 5;
+        timerEl.textContent = timeRemain;
         displayQuestion();
     } else {
         gameOver();
@@ -131,40 +139,30 @@ function winGame() {
 function gameOver() {
     clearInterval(timer);
     timeRemain = 0;
+    timerEl.textContent = timeRemain
     overEl.textContent = ("Game Over");
-    // logButton.disabled = false;
-    // startButton.disabled = false;
     questionBlock.textContent = ("A Valiant Attempt");
     multiChoiceBlock.innerHTML = "";
-}
+    }
  
- logButton.addEventListener("click", function(event) {
+    logButton.addEventListener("click", function(event) {
     event.preventDefault();
     let initials = document.querySelector("#initials").value;
-    // logButton.disabled = true;
-
     if (initials === "") {
         alert("Initials cannot be blank");
     } else {
-        localStorage.setItem("initials", initials);
-        localStorage.setItem("gamesWon", wins);
-        localStorage.setItem("gamelost", losses);
+        winsLosses.push([initials,wins,losses]);
+        localStorage.setItem("winloss", winsLosses);
     }
- });
-//  highScoreButton.addEventListener("click", function(event) {
-//     event.preventDefault(); 
+    });
 
-
+    // highScoreButton.addEventListener("click", function(event) {
+    // event.preventDefault(); 
+    // winsLosses.sort(function (name, maxwin) 
+    // {console.log([winsLosses.initials, winsLosses.wins,winsLosses.losses]);
+    
+    // });
 
 startButton.addEventListener("click", startGame);
-// logButton.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     let initials = document.querySelector("#initials").value;
-//     logButton.disabled = true;
 
-//     if (initials === "") {
-//         displayMessage("error", "Initials cannot be blank");
-//         localStorage.setItem("initials", initials);
-//         localStorage.setItem("gamesWon", gameswon);
-//         localStorage.setItem("gamelost", gameslost);
 //     }
