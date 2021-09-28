@@ -1,23 +1,13 @@
-Psudo Code:
-Design Html doc to contains a start Button - click event listener
-Places for questions, mulitples and answers
-Timer design
-question.
-display possible multiple choice answers.
-make them selectable
-user selects one of 4
-check for correct answer and timer <> 0
-Right gets more time and ++wins 
-Wrong gets less time and --losses
-both are retained  
-next question
-
-game is over when either the timer is done or all questions have been answered
-
-
-
-
-confirm : user saves typein intials and save
-only save if 
-Somehwere to bring up History based on initals
+Create Appointment Daily Planner
+Jquery to get timer to display in Header
+setup header with current date and time updating every second
+Add Bootstrap formatted list 
+Add source David & Libre from google fonts and made them global
+// creat/name schedule boxes 9 to 5 one for each hour/ box 
+boxes are editable
+times are not editable
+//have past colors greyed out - past box time plus 1 hour - also disables the box 
+// current time equal red 
+future time aequals green
 ![Alt text](//quiz_screen.png?raw=true "quizScreen")
+
