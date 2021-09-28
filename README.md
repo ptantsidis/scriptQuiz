@@ -10,4 +10,4 @@ times are not editable
 // current time equal red 
 future time aequals green
 ![Alt text](//quiz_screen.png?raw=true "quizScreen")
-
+https://github.com/ptantsidis/scriptQuiz
