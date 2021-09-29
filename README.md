@@ -7,4 +7,3 @@ Adds time if question sanswered correctly removes time if answered incorrectly.
 https://github.com/ptantsidis/scriptQuiz.git
 https://ptantsidis.github.io/scriptQuiz/
 
-
