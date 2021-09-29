@@ -23,8 +23,8 @@ let h = 0;
 
 let winsLosses = [{
     initials: "",
-    wins: 0,
-    losses: 0,
+    gamesWon: 0,
+    gamesLost: 0,
 }]
 
 
@@ -151,8 +151,12 @@ function gameOver() {
     if (initials === "") {
         alert("Initials cannot be blank");
     } else {
-        winsLosses.push([initials,wins,losses]);
-        localStorage.setItem("winloss", winsLosses);
+        gamesWon = wins;
+        gamesLost= losses;
+        winsLosses.push({initials,gamesWon,gamesLost});
+
+        console.log([winsLosses]);
+        // localStorage.setItem("winloss", winsLosses);
     }
     });
 
