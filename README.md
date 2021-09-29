@@ -1,5 +1,5 @@
 This is the game quis readme.
-UUses moment jsript, html and css.
+Uses moment jsript, html and css.
 Records wins and losses and retrieves high score based on intitals entered.
 Adds time if question sanswered correctly removes time if answered incorrectly.
 
