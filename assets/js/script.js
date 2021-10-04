@@ -10,8 +10,12 @@ let item = document.createElement('li');
 let userSignup = document.querySelector("#initials");
 let gamesWon = document.querySelector("#gamesWon");
 let gamesLost = document.querySelector("#gamesLost");
-let userSign = document.querySelector(".high-score");
-let userScore = document.querySelectorAll(".highscore")
+let highScoreButton = document.querySelector(".high-score");
+let showScores = document.querySelector(".userScore");
+
+
+//.getElementsByClassName
+// let userSignup = document.querySelector("#initials");
 
 let timeRemain = 15;
 let losses = 0;
@@ -21,13 +25,7 @@ let questionNumber = 0;
 let i = 0;
 let h = 0;
 
-let winsLosses = [{
-    initials: "",
-    gamesWon: 0,
-    gamesLost: 0,
-}]
-
-
+let scoreStorage = [];
 
 let questions = [{
     question: "JavaScript is ______ Side scripting language.",
@@ -56,7 +54,6 @@ let questions = [{
 
 }]
 
-
 function startGame() {
     initApp();
     startTime();
@@ -69,8 +66,11 @@ function initApp() {
     questionNumber = 0;
     winsEl.textContent = 0;
     lossesEl.textContent = 0;
-   
+    overEl.textContent = "";
+    showScores.style.display = "none";
+
 }
+
 function startTime() {
     timeRemain = 15;
     timer = setInterval(function () {
@@ -125,7 +125,6 @@ function winGame() {
     console.log("wingame")
     wins++;
     winsEl.textContent = wins;
-
     questionNumber++;
     if ((timeRemain > 0) && (questionNumber != questions.length)) {
         timeRemain = timeRemain + 5;
@@ -143,30 +142,47 @@ function gameOver() {
     overEl.textContent = ("Game Over");
     questionBlock.textContent = ("A Valiant Attempt");
     multiChoiceBlock.innerHTML = "";
-    }
- 
-    logButton.addEventListener("click", function(event) {
+}
+logButton.addEventListener("click", function (event) {
     event.preventDefault();
+    console.log('Click')
     let initials = document.querySelector("#initials").value;
     if (initials === "") {
         alert("Initials cannot be blank");
     } else {
-        gamesWon = wins;
-        gamesLost= losses;
-        winsLosses.push({initials,gamesWon,gamesLost});
-
-        console.log([winsLosses]);
-        // localStorage.setItem("winloss", winsLosses);
+        let userData = {
+            name:initials,
+            wins: wins,
+            losses:losses
+        }
+        scoreStorage.push(userData);
+        console.log("initials");
+        localStorage.setItem("scoreStorage",JSON.stringify(scoreStorage))
     }
+});
+
+highScoreButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (initials !=="" ) {
+        showScores.style.display = "inline-block";
+        let tempObj = JSON.parse(localStorage.getItem("scoreStorage"));
+        var HTML ="";
+        for( i=0 ;i < tempObj.length; i++) {
+            for(let j=0;j < tempObj.length;j++){
+                if(tempObj[i].wins < tempObj[j].wins){
+                    let temp = tempObj[i]
+                    tempObj[i] = tempObj[j]
+                    tempObj[j] = temp
+                }
+            }
+        }
+        console.log(tempObj)
+        showScores.appendChild(temp)
+    } else {
+        alert("Initials cannot be blank");  
+    }
+
     });
 
-    // highScoreButton.addEventListener("click", function(event) {
-    // event.preventDefault(); 
-    // winsLosses.sort(function (name, maxwin) 
-    // {console.log([winsLosses.initials, winsLosses.wins,winsLosses.losses]);
-    
-    // });
+    startButton.addEventListener("click", startGame);
 
-startButton.addEventListener("click", startGame);
-
-//     }

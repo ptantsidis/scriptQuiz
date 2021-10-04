@@ -10,38 +10,41 @@
 
 <body>
     <header>
+
+        <nav>
+            <button class = "high-score">High Scores</button>
+        </nav>
         <h1>Mind Games in JavaScript API</h1>
-        <button class = "high-score">High Scores</button>
     </header>
     <main>
-        <section>
-            <div id="question-list">Question</div>
-            <h2>Mulitple Choice</h2>
-             <ol id="multi-choice-list"></ol>
-            <button class="start-button">Start Game</button>
+        <row>
+        <section id ="q-block">
+            <h2>Mulitple Choice Questions</h2>
+            <div id="question-list"></div>
+                <ol id="multi-choice-list"></ol>
+            </div>  
+        </section>
+        <div id ="results-box">        
             <div class="time-remain">15</div>
-            <h3><span class="over"></span> </h3>
-        </section>
-        <section>
-            <h3>Wins: <span class="wins">0</span> </h3>
-            <h3>Losses: <span class="losses">0</span> </h3>
-        </section>
-        <div class="sign-up">
-            <button class="log-button">Log Scores</button>
-            <div class="userScore">
+            <h3><span class="over"></span></h3>
+            <h3>Wins: <span class="wins">0</span></h3>
+            <h3>Losses: <span class="losses">0</span></h3>
+            <button class="start-button">Start Game</button>
+        </div>
+        <section id ="sign-up-container">
+            <button class="log-button">Log Scores</button> 
+            <div class="initials">
                 <label for="initials">Initials: </label>
                 <input type="text" name="initials" id="initials" />
             </div>
-             <div class="userScore">
+            <div class="userScore">
                 <label for="gamesWon">Won:</label>
                 <input type="gamesWon" name="gamesWon" id="gamesWon" placeholder="0" />
-            </div>
-            <div class="userScore">
                 <label for="gamelost">Lost:</label>
                 <input type="gamelost" name="gamelost" id="gamelost" placeholder="0"/>
             </div> 
-
-        </div>
+        </row>   
+        </section>
 	</main>
 	<script src=" assets/js/script.js"></script>
 </body>

@@ -1,7 +1,7 @@
-This is the game quis readme.
-Uses moment jsript, html and css.
+This is the game quiz readme.
+Uses moment, jsript, html, JSON and css.
 Records wins and losses and retrieves high score based on intitals entered.
-Adds time if question sanswered correctly removes time if answered incorrectly.
+Adds  3 seconds of time if question answered correctly removes 3 seonds of time if answered incorrectly.
 
 ![Alt text](//quiz_screen.png?raw=true "quizScreen")
 https://github.com/ptantsidis/scriptQuiz.git
