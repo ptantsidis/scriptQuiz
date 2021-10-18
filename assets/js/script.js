@@ -25,7 +25,7 @@ let questionNumber = 0;
 let i = 0;
 let h = 0;
 
-let scoreStorage = [];
+let scoreStorage = JSON.parse(localStorage.getItem("scoresStorage"))||[];
 
 let questions = [{
     question: "JavaScript is ______ Side scripting language.",
@@ -165,10 +165,10 @@ highScoreButton.addEventListener("click", function (event) {
     event.preventDefault();
     if (initials !=="" ) {
         showScores.style.display = "inline-block";
-        let tempObj = JSON.parse(localStorage.getItem("scoreStorage"));
+        let tempObj = JSON.parse(localStorage.getItem("scoreStorage")) || []
         var HTML ="";
         for( i=0 ;i < tempObj.length; i++) {
-            for(let j=0;j < tempObj.length;j++){
+            for(let j=0;j < tempObj.length; j++){
                 if(tempObj[i].wins < tempObj[j].wins){
                     let temp = tempObj[i]
                     tempObj[i] = tempObj[j]
@@ -177,7 +177,10 @@ highScoreButton.addEventListener("click", function (event) {
             }
         }
         console.log(tempObj)
-        showScores.appendChild(temp)
+        for(let i =0;i<tempObj.length;i++){
+            HTML += `<p>Name:${tempObj[i].name} / Wins: ${tempObj[i].wins} / Losses : ${tempObj[i].losses}}}`
+        }
+        showScores.innerHTML = HTML
     } else {
         alert("Initials cannot be blank");  
     }
