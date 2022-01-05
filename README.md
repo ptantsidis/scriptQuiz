@@ -1,10 +1,57 @@
-This is the game quiz readme.
-Uses moment, jsript, html, JSON and css.
-Records wins and losses and retrieves high score based on intitals entered.
-Adds  3 seconds of time if question answered correctly removes 3 seonds of time if answered incorrectly.
+ # scriptQuiz 
+____
+  ## A test in Scripting.  
+  ____  
+  ## Table of Contents
+____
+  [Installation](#installation)
 
-![Alt text](//quiz_screen.png?raw=true "quizScreen")
-https://github.com/ptantsidis/scriptQuiz.git
-https://ptantsidis.github.io/scriptQuiz/
+  *[Description](#desc)
 
-![quiz_screen](https://user-images.githubusercontent.com/90045665/135943070-8ec4384a-fbcf-48be-b271-0a386b352a67.png)
+  *[Usage](#usage)
+
+  *[Start](#start)
+  
+  *[Contributions](#contributions)
+
+  *[Contact](#contact)
+
+  *[License](#license)
+
+  *[GitHub Nane](#githubname)
+
+  *[GitHubRepo](#githubrepo)
+
+  *[Images](#images)
+____  
+  ## Installation
+  JavaScript, JSON, HTML, CSS.
+
+  ## Usage
+  Testing knowledge of JavaScript.
+
+  ## Start
+  node index.js, https://ptantsidis.github.io/scriptQuiz/
+
+  ## Contributions
+  Created By Phil Tantsidis
+    
+  ###  Contact
+  ptantsidis@hotmail.com	
+    
+  ### License
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  (https://opensource.org/licenses/MIT)
+  No
+
+  ### GitHub Name
+  https://github.com/ptantsidis
+  
+  ### GitHub Repo
+   https://github.com/ptantsidis/scriptQuiz.git
+
+   ### Heroku Deploy
+   No
+
+  ### Images  
+  https://user-images.githubusercontent.com/90045665/135943070-8ec4384a-fbcf-48be-b271-0a386b352a67.png
