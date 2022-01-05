@@ -31,7 +31,7 @@ ____
   Testing knowledge of JavaScript.
 
   ## Start
-  node index.js, https://ptantsidis.github.io/scriptQuiz/
+  https://ptantsidis.github.io/scriptQuiz/
 
   ## Contributions
   Created By Phil Tantsidis
